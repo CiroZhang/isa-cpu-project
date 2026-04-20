@@ -28,7 +28,7 @@
 // ================================================================================
 // NOT     00    Rd = Not(Rd)       
 // COU     01    Rd = count(Rd)               
-// ...     10    borrow = sign(Rd)
+// SIGN    10    borrow = sign(Rd)
 // DONE    11    Set Done             
 
 
