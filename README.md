@@ -44,7 +44,7 @@ ISA:
   - 8-bit data path
   - 14 opcodes across 4 instruction types
   - Custom instructions: SIGN (sets borrow = sign bit of Rd),
-    used for signed multiplication correction in Program 3
+    used for signed multiplication correction in Program 2 and 3
 
 Instruction Memory:
   - 512 entries (9-bit address), well within the 2^10 soft limit
