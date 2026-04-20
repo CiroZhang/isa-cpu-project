@@ -3,8 +3,8 @@
 // ================================================================================
 // ADD     0000    Rd = Rd + Rs + carry                 sets carry  
 // ADDX    0001    Rd = Rd + Rs{+4} + carry             sets carry  
-// SUB     0010    Rd = Rd - Rs{+4} - borrow            sets borrow
-// SUBX    0011    Rd = Rd - Rs - borrow                sets borrow
+// SUB     0010    Rd = Rd - Rs - borrow            sets borrow
+// SUBX    0011    Rd = Rd - Rs{+4} - borrow                sets borrow
 // MUL     0100    Rd = Rd * Rs 'b{8:0}
 // MULC    0101    Rd = Rd * Rs 'b{16:8}  
 // STR     0110    mem[Rs] = Rd              
