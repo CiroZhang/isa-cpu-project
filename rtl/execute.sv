@@ -35,7 +35,7 @@
 
 module execute (
   input  logic [8:0] instr,
-  input  logic [7:0] pc,
+  input  logic [8:0] pc,
   input  logic       carry_in,
   input  logic       borrow_in,
 
@@ -55,7 +55,7 @@ module execute (
   output logic       mem_enable,
 
   // outputs
-  output logic [7:0] next_pc,
+  output logic [8:0] next_pc,
   output logic       carry_out,
   output logic       borrow_out
 );
@@ -70,7 +70,7 @@ module execute (
   logic [8:0]  sub_diff;
   logic [15:0] product;
   logic [7:0]  xor_tmp;
-  logic signed [7:0] branch_offset;
+  logic signed [8:0] branch_offset;
 
   assign opcode = instr[8:5];
   assign offset = instr[4:0];
@@ -86,7 +86,7 @@ module execute (
   assign sub_diff = {1'b0, rd_data} - {1'b0, rs_data} - {8'b0, borrow_in};
   assign product  = rd_data * rs_data;
   assign xor_tmp  = rd_data ^ rs_data;
-  assign branch_offset = $signed({{2{offset[4]}}, offset, 1'b0});
+  assign branch_offset = $signed({{3{offset[4]}}, offset, 1'b0});
 
   always_comb begin
     reg_data_in = 8'b0;
@@ -97,7 +97,7 @@ module execute (
     wr_addr     = rd_addr;
     carry_out   = carry_in;
     borrow_out  = borrow_in;
-    next_pc     = pc + 8'd1;
+    next_pc     = pc + 9'd1;
 
     case (opcode)
       // --- Type 1 ---

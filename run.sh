@@ -147,7 +147,9 @@ module runner_tb;
   initial begin
     // initialise data memory from file
     $readmemb("input_mem.txt", dut.dm.core);
-    // match official test bench: min starts at max, max starts at 0
+    // P1: min starts at 16 (max hamming), max starts at 0
+    dut.dm.core[64] = 8'd16;
+    // P2: min starts at 0xFFFF, max starts at 0
     dut.dm.core[66] = 8'hff;
     dut.dm.core[67] = 8'hff;
 

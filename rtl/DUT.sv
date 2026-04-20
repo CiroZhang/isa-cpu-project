@@ -10,9 +10,9 @@ module DUT (
 );
 
   // --- program start addresses ---
-  parameter P1_START = 8'd0;
-  parameter P2_START = 8'd85;
-  parameter P3_START = 8'd170;
+  parameter P1_START = 9'd0;
+  parameter P2_START = 9'd64;
+  parameter P3_START = 9'd192;
 
   // --- program selector: increments on each rising edge of start ---
   logic [1:0] prog_sel;
@@ -24,7 +24,7 @@ module DUT (
     if (start & ~start_q) prog_sel <= prog_sel + 1;
 
   // --- start address mux ---
-  logic [7:0] start_addr;
+  logic [8:0] start_addr;
   always_comb case (prog_sel)
     2'd0:    start_addr = P1_START;
     2'd1:    start_addr = P2_START;
@@ -33,7 +33,7 @@ module DUT (
   endcase
 
   // --- program counter ---
-  logic [7:0] pc, next_pc;
+  logic [8:0] pc, next_pc;
 
   always_ff @(posedge clk)
     if (start) pc <= start_addr;
